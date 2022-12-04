@@ -3,18 +3,18 @@
     <div class='card'>
       <!-- Imagen de tarjeta -->
       <div class='card-image'>
-        <img src='/images/project.jpg' alt='Project Image' />
+        <img src='https://static-images.ifood.com.br/image/upload/t_high/logosgde/9ca3c9a2-366c-4ea9-982c-d940cf5ffe54/202112201011_1pDj_.jpeg' alt='Project Image' />
         <span class='card-title white teal-text text-darken-4'>
-          Agregar Proyecto
+          Crear Orden
         </span>
       </div>
       <!-- Contenido de tarjeta -->
       <form autocomplete='off' action='/project/add' method='POST'>
         <div class='card-content'>
           <div class='input-field'>
-            <label for='project-name'>Nombre de tu idea de proyecto</label>
+            <label for='project-name'>Numero de Control: </label>
             <input
-              placeholder='El nombre del proyecto aqui 👇'
+              placeholder='Digita tu numero de control aqui👇'
               type='text'
               name='name'
               id='project-name'
@@ -25,12 +25,13 @@
           </div>
           <div class='input-field'>
             <label for='project-description'>
-              Descripción del proyecto
+              Nombre completo: 
             </label>
             <textarea
               name='description'
               class="materialize-textarea"
               id='project-description'
+              placeholder='Escribe tu nombre completo aqui👇'
             ></textarea>
             {{#if errorModel.descriptionError}}
             <span style="color:red;">🚩 {{errorModel.descriptionError}}</span>
