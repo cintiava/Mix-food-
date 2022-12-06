@@ -17,6 +17,11 @@ const showAddProjectForm = (req, res) => {
   res.render('project/add', viewModel);
 };
 
+const showAddForm = (req, res) => {
+  const viewModel = {};
+  res.render('project/carro', viewModel);
+};
+
 // POST "/project/add"
 // POST "/project/create"
 const addProject = (req, res) => {

@@ -18,6 +18,7 @@
               type='text'
               name='name'
               id='project-name'
+              value="{{project.name}}"
             />
             {{#if errorModel.nameError}}
             <span style="color:red;">🚩 {{errorModel.nameError}}</span>
@@ -32,14 +33,14 @@
               class="materialize-textarea"
               id='project-description'
               placeholder='Escribe tu nombre completo aqui👇'
-            ></textarea>
+            >{{project.description}}</textarea>
             {{#if errorModel.descriptionError}}
             <span style="color:red;">🚩 {{errorModel.descriptionError}}</span>
             {{/if}}
           </div>
         </div>
         <div class='card-action'>
-          <button type="submit" class="blue darken-3 waves-effect waves-light btn">
+          <button onclick="location.href='./carro.hbs' "type="submit" class="blue darken-3 waves-effect waves-light btn">
             <i class="material-icons left">note_add</i> Agregar
           </button>
         </div>
