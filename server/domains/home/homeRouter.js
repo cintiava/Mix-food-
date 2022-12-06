@@ -11,6 +11,9 @@ const router = new Router();
 // GET '/index
 router.get(['/', '/home', '/index'], homeController.home);
 
+// GET '/menu
+router.get(['/menu'], homeController.menu);
+
 // GET '/about
 router.get(['/about'], homeController.about);
 

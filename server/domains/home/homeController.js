@@ -15,6 +15,14 @@ const home = (req, res) => {
   res.render('home/home', viewModel);
 };
 
+// GET "/menu"
+const menu = (req, res) => {
+  const viewModel = {
+    appVersion: configKeys.appVersion,
+  };
+  res.render('home/menu', viewModel);
+};
+
 // GET "/about"
 const about = (req, res) => {
   const viewModel = {
@@ -24,4 +32,4 @@ const about = (req, res) => {
 };
 
 // Exportando el Controlador
-export default { home, about };
+export default { home, menu, about };
