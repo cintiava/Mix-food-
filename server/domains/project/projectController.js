@@ -1,13 +1,18 @@
 // Creando los Actions Methods
 // del controlador Project
 
+// importando el modelo del proyecto
+import ProjectModel from './projectModel';
+
 // GET "/project"
 // GET "/project/list"
-const list = (req, res) => {
+const list = async (req, res) => {
   // 1. Generando el view-model
-  const viewModel = {};
+  // retorna los proyectos de la base de datos
+  const project = await ProjectModel.find().lean();
   // 2. Madamos a generar la vista con el Template Engine
-  res.render('project/list', viewModel);
+  // regresamos el resultado de la peticion
+  res.render('project/list', { project });
 };
 
 // GET "/project/add"
@@ -17,14 +22,9 @@ const showAddProjectForm = (req, res) => {
   res.render('project/add', viewModel);
 };
 
-const showAddForm = (req, res) => {
-  const viewModel = {};
-  res.render('project/carro', viewModel);
-};
-
 // POST "/project/add"
 // POST "/project/create"
-const addProject = (req, res) => {
+const addProject = async (req, res) => {
   // Rescatando la info del formulario
   const { validData, errorData: error } = req;
   let project = {};
@@ -44,12 +44,22 @@ const addProject = (req, res) => {
       return newVal;
     }, {});
   } else {
-    // Si los datos del formulario fueron validos
-    // Se asignan a project
-    project = validData;
+    // Creando un documento con los datos
+    // provistos por el formulario
+    const projectInstance = new ProjectModel(validData);
+    // Salvando el documento en la base de datos
+    try {
+      const projectDocument = await projectInstance.save();
+      // cambiar esto por winston
+      console.log(`proyecto creado: ${JSON.stringify(projectDocument)}`);
+      // Redireccionando al listado de proyectos
+      return res.redirect('/project');
+    } catch (error1) {
+      return res.status(404).json({ error1 });
+    }
   }
   // Contestando los datos del proyecti
-  res.status(200).render('project/add', { project, errorModel });
+  return res.status(200).render('project/add', { project, errorModel });
 };
 
 // Exportando el Controlador
