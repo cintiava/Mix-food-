@@ -1,0 +1,16 @@
+
+pass sudo: Sheidandri1
+
+Para usar mongoose en nuestra aplicación primero instalaremos la dependencia, para ello tecleamos:
+
+$ npm i -S mongoose
+$ sudo apt update
+$ wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
+$ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+$ sudo apt-get update
+$ sudo apt-get install -y mongodb-org
+ver la version de mongo si todo salio bien
+$ mongod --version
+$ mkdir -p ~/data/db
+-------------Conexión base:----------------------
+sudo mongod --dbpath ~/data/db
